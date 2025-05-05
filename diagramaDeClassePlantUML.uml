@@ -1,0 +1,33 @@
+@startuml
+class Produto {
+  - id: int
+  - nome: String
+  - descricao: String
+  - preco: double
+  - quantidade: int
+  - imagem: String
+}
+
+class ItemNoCarrinho {
+  - itemId: int
+  - CarrinhoId: int
+  - quantidade: int
+  + calcularPreco(): double
+}
+
+class Carrinho {
+  -ValorCarrinho: double
+  -nItensNoCarrinho: int
+  + calcularTotal(): double
+}
+
+class Conta {
+  -ValorConta: double
+  -ValorContaSBonus: double
+  + calcularTotal(): double
+}
+
+Produto "1" --o "*" ItemNoCarrinho
+Carrinho "1" --o "*" ItemNoCarrinho
+Conta "1" --* "n" Carrinho
+@enduml
